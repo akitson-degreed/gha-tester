@@ -48,7 +48,7 @@ jobs:
           script: |
             const {owner, repo} = context.issue
 
-            const output = `${{ github.event.payload.comment.body }}
+            const output = `${{ github.event.comment.body }}
 
             #### PR Deployment Complete 🚀\`APP URL GOES HERE\`
 
