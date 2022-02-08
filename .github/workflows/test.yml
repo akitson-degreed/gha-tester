@@ -54,10 +54,10 @@ jobs:
           script: |
             const {owner, repo} = context.issue
 
-            const output = `#### PR Deployment Complete 🚀
-            URL: [https://APP_URL_GOES_HERE](https://APP_URL_GOES_HERE)
+            const output = `${{ github.event.comment.body }}
 
-            *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
+            #### PR Deployment Complete 🚀
+            *URL: [https://APP_URL_GOES_HERE](https://APP_URL_GOES_HERE)*;
 
             github.issues.updateComment({
               owner,
