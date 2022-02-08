@@ -48,14 +48,16 @@ jobs:
           script: |
             const {owner, repo} = context.issue
 
-            const output = `#### PR Deployment Complete 🚀\`APP URL GOES HERE\`
+            const output = `${{ context.payload.comment.body }}
+
+            #### PR Deployment Complete 🚀\`APP URL GOES HERE\`
 
             *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
 
-            github.issues.createComment({
-              issue_number: context.issue.number,
+            github.issues.updateComment({
               owner,
               repo,
+              comment_id: context.payload.comment.id,
               body: output
             })
 
