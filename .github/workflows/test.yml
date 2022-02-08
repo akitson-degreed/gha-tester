@@ -20,7 +20,12 @@ jobs:
         shell: bash
 
     steps:
-      - uses: actions/github-script@v3
+      - name: View context attributes
+        uses: actions/github-script@v4
+        with:
+          script: console.log(context)
+
+      - uses: actions/github-script@v4
         id: get-pr
         with:
           script: |
