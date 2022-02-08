@@ -56,7 +56,7 @@ jobs:
             const output = `${{ github.event.comment.body }}
 
             #### PR Deployment Complete 🚀
-            DateTime: $(date)
+            DateTime: ${{ date }}
             URL: \`APP URL GOES HERE\`
 
             *Pusher: @${{ github.actor }}, Action: \`${{ github.event_name }}\`*`;
