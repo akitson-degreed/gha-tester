@@ -1,0 +1,33 @@
+name: Chatops Instructions
+on:
+  pull_request:
+    types: [opened]
+jobs:
+  addCommentToPr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.number }}
+          body: |
+            ### Initiating a PR Deployment
+            To deploy Degreed.Web with the code on this PR, create/edit a comment and set the first line in the comment as follows:
+            ```
+            /deploy
+            ```
+            By default, this will deploy Degreed.Web targeting the `development` database.
+            If you wish to target that `staging` or `release` databases, then add an additional argument specifying the target environment like so:
+            ```
+            /deploy environment=staging
+            ```
+            ```
+            /deploy environment=release
+            ```
+            Any content after the first line is ignored and can be freely used for comments
+
+            Example:
+            ![chatops](.github/workflows/chatops.png)
+
+
+

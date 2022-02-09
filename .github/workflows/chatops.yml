@@ -1,4 +1,4 @@
-name: Chatops
+name: Chatops Listener
 on:
   issue_comment:
     types: [created]
