@@ -41,7 +41,9 @@ jobs:
     steps:
       - name: Create URL to the run output
         id: vars
-        run: echo ::set-output name=run-url::https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+        run: |
+          echo ::set-output name=run-url::https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          echo ::set-output name=run-url::https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
 
       - name: Add reaction
         uses: peter-evans/create-or-update-comment@v1
@@ -52,7 +54,7 @@ jobs:
           reaction-type: hooray
           body: |
             **Edit:** Deployment targeting "${{ github.event.inputs.TARGET_ENV }}" database completed.
-            [Run ID: ${{ env.GITHUB_RUN_ID }}][1]
+            [Run ID: ${{ github.run_id }}][1]
 
             [1]: ${{ steps.vars.outputs.run-url }}
 
