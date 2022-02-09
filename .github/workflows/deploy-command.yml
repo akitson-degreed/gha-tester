@@ -9,7 +9,7 @@ on:
       comment-id:
         description: 'The comment-id of the slash command'
         required: true
-      TARGET_ENV:
+      environment:
         description: 'Target Environment'
         required: true
         default: 'development'
@@ -30,9 +30,9 @@ on:
 jobs:
   deploy:
     # if: ${{  github.event.issue.pull_request && (startsWith(github.event.comment.body, '$deploy') && contains(github.event.comment.body, 'dev')) }}
-    name: Deploy ${{ github.event.inputs.TARGET_ENV }}
+    name: Deploy ${{ github.event.inputs.environment }}
     environment:
-      name: ${{ github.event.inputs.TARGET_ENV }}
+      name: ${{ github.event.inputs.environment }}
     runs-on: ubuntu-20.04
     defaults:
       run:
@@ -52,7 +52,7 @@ jobs:
           reaction-type: hooray
           body: |
             **Edit:** Deployment targeting "${{ github.event.inputs.TARGET_ENV }}" database completed.
-            [Run ID: $GITHUB_RUN_ID][1]
+            [Run ID: ${{ GITHUB_RUN_ID }}][1]
 
             [1]: ${{ steps.vars.outputs.run-url }}
 
