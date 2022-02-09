@@ -39,13 +39,6 @@ jobs:
         shell: bash
 
     steps:
-      - name: Edit comment with startup message
-        uses: peter-evans/create-or-update-comment@v1
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          body: |
-            ...starting deployment: Run ID: ${{ github.run_id }}
-
       - name: Create URL to the run output
         id: vars
         run: |

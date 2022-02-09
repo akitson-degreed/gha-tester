@@ -6,13 +6,6 @@ jobs:
   slashCommandDispatch:
     runs-on: ubuntu-latest
     steps:
-      - name: Edit comment with startup message
-        uses: peter-evans/create-or-update-comment@v1
-        with:
-          comment-id: ${{ github.event.comment.id }}
-          body: |
-            ...starting chatops
-
       - name: Slash Command Dispatch
         id: scd
         uses: peter-evans/slash-command-dispatch@v2
@@ -20,10 +13,10 @@ jobs:
           token: ${{ secrets.CHATOPS_TOKEN }}
           issue-type: pull-request
           dispatch-type: workflow
+          allow-edits: true
           static-args: |
             repository=${{ github.repository }}
             comment-id=${{ github.event.comment.id }}
-            ref=${{ github.ref }}
           commands: |
             deploy
 
