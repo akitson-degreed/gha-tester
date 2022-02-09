@@ -53,7 +53,7 @@ jobs:
           comment-id: ${{ github.event.inputs.comment-id }}
           reaction-type: hooray
           body: |
-            **Edit:** Deployment targeting "${{ github.event.inputs.TARGET_ENV }}" database completed.
+            **Edit:** Deployment targeting "${{ github.event.inputs.environment }}" database completed.
             [Run ID: ${{ github.run_id }}][1]
 
             [1]: ${{ steps.vars.outputs.run-url }}
