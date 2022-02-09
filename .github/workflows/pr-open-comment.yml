@@ -27,7 +27,7 @@ jobs:
             Any content after the first line is ignored and can be freely used for comments
 
             Example:
-            ![chatops](.github/workflows/chatops.png)
+            ![chatops](${{ github.server_url }}/${{ github.repository }}/main/.github/workflows/chatops.png?raw=true)
 
 
 
