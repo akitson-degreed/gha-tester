@@ -20,10 +20,10 @@ jobs:
           token: ${{ secrets.CHATOPS_TOKEN }}
           issue-type: pull-request
           dispatch-type: workflow
-          ref: ${{ github.ref }}
           static-args: |
             repository=${{ github.repository }}
             comment-id=${{ github.event.comment.id }}
+            ref=${{ github.ref }}
           commands: |
             deploy
 
