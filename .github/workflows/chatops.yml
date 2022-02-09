@@ -18,7 +18,7 @@ jobs:
             repository=${{ github.repository }}
             comment-id=${{ github.event.comment.id }}
           commands: |
-            deploy-pr
+            deploy
 
       - name: Edit comment with error message
         if: steps.scd.outputs.error-message
