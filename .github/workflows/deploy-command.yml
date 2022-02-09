@@ -46,6 +46,10 @@ jobs:
           repository: ${{ github.event.inputs.repository }}
           comment-id: ${{ github.event.inputs.comment-id }}
           reaction-type: hooray
+          body: |
+            **Edit:** Deployment targeting "${{ github.event.inputs.TARGET_ENV }}" database completed.
+            #### PR Deployment Complete 🚀
+            *URL: [https://APP_URL_GOES_HERE](https://APP_URL_GOES_HERE)*;
 
       # - uses: actions/github-script@v4
       #   id: get-pr
