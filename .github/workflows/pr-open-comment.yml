@@ -1,7 +1,7 @@
 name: Chatops Instructions
 on:
   pull_request:
-    types: [opened]
+    types: [opened, reopened]
 jobs:
   addCommentToPr:
     runs-on: ubuntu-latest
@@ -27,7 +27,7 @@ jobs:
             Any content after the first line is ignored and can be freely used for comments
 
             Example:
-            ![chatops](${{ github.server_url }}/${{ github.repository }}/main/.github/workflows/chatops.png?raw=true)
+            ![chatops](${{ github.server_url }}/${{ github.repository }}/blob/main/.github/workflows/chatops.png?raw=true)
 
 
 
