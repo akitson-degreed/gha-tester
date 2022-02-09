@@ -10,7 +10,8 @@ jobs:
         id: scd
         uses: peter-evans/slash-command-dispatch@v2
         with:
-          token: ${{ secrets.CHATOPS_TOKEN }}
+          #token: ${{ secrets.CHATOPS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           issue-type: pull-request
           dispatch-type: workflow
           ref: ${{ github.ref }}
