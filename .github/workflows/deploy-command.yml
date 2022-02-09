@@ -39,6 +39,10 @@ jobs:
         shell: bash
 
     steps:
+      - name: Create URL to the run output
+        id: vars
+        run: echo ::set-output name=run-url::https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+
       - name: Add reaction
         uses: peter-evans/create-or-update-comment@v1
         with:
@@ -48,8 +52,13 @@ jobs:
           reaction-type: hooray
           body: |
             **Edit:** Deployment targeting "${{ github.event.inputs.TARGET_ENV }}" database completed.
+            [Command run output][1]
+
+            [1]: ${{ steps.vars.outputs.run-url }}
+
             #### PR Deployment Complete 🚀
-            *URL: [https://APP_URL_GOES_HERE](https://APP_URL_GOES_HERE)*;
+            URL: [https://APP_URL_GOES_HERE](https://APP_URL_GOES_HERE)
+
 
       # - uses: actions/github-script@v4
       #   id: get-pr
